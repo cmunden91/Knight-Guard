@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fighter : entity {
+public class fighter : entity
+{
     [HideInInspector, SerializeField]
     private int currenthp;
     [HideInInspector, SerializeField]
@@ -10,14 +11,15 @@ public class fighter : entity {
     [HideInInspector, SerializeField]
     private bool hostile;
 
-    public fighter(string name, bool interactable, int currenthp, int maxhp, bool hostile) : base(name, interactable)
+    public fighter(string name, bool interactable, int currenthp, int maxhp, bool hostile, int movementspeed, int jumpheight) : base(name, interactable, movementspeed, jumpheight)
     {
         this.currenthp = currenthp;
         this.maxhp = maxhp;
         this.hostile = hostile;
     }
 
-    [ExposeProperty] public int Currenthp
+    [ExposeProperty]
+    public int Currenthp
     {
         get { return currenthp; }
         set { currenthp = value; }
@@ -36,5 +38,4 @@ public class fighter : entity {
         get { return hostile; }
         set { hostile = value; }
     }
-
 }

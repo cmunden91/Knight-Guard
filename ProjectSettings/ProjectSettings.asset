@@ -381,7 +381,14 @@ PlayerSettings:
   webGLUseEmbeddedResources: 0
   webGLUseWasm: 0
   webGLCompressionFormat: 1
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: CROSS_PLATFORM_INPUT
+    4: CROSS_PLATFORM_INPUT;MOBILE_INPUT
+    7: CROSS_PLATFORM_INPUT;MOBILE_INPUT
+    14: MOBILE_INPUT
+    17: MOBILE_INPUT
+    20: MOBILE_INPUT
+    22: MOBILE_INPUT
   platformArchitecture: {}
   scriptingBackend: {}
   incrementalIl2cppBuild: {}
@@ -466,5 +473,5 @@ PlayerSettings:
     UNet: 1
   cloudProjectId: ab35c57a-6dcf-4661-88bf-c43488cc96e5
   projectName: Knight Guard (3)
-  organizationId: pakunee
+  organizationId: runic-fang
   cloudEnabled: 0

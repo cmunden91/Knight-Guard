@@ -8,11 +8,17 @@ public abstract class entity : ExposableMonobehaviour
     private string name;
     [HideInInspector, SerializeField]
     private bool interactable;
+    [HideInInspector, SerializeField]
+    private int movementspeed;
+    [HideInInspector, SerializeField]
+    private int jumpheight;
 
-    public entity(string name, bool interactable)
+    public entity(string name, bool interactable, int movementspeed, int jumpheight)
     {
         this.name = name;
         this.interactable = interactable;
+        this.movementspeed = movementspeed;
+        this.jumpheight = jumpheight;
     }
 
     [ExposeProperty]
@@ -28,4 +34,18 @@ public abstract class entity : ExposableMonobehaviour
         get { return interactable; }
         set { interactable = value; }
     }
+    [ExposeProperty]
+    public int Movementspeed
+    {
+        get { return movementspeed; }
+        set { movementspeed = value; }
+    }
+    [ExposeProperty]
+    public int Jumpheight
+    {
+        get { return jumpheight; }
+        set { jumpheight = value; }
+    }
+
+
 }

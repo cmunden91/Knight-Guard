@@ -7,7 +7,9 @@ public class player : fighter {
     private static bool interactable = false;
     private static int defaulthealth = 100;
     private static bool hostile = false;
-    public player() : base(name, interactable, defaulthealth, defaulthealth, hostile)
+    private static int defaultmovementspeed = 1;
+    private static int defaultjumpheight = 1;
+    public player() : base(name, interactable, defaulthealth, defaulthealth, hostile, defaultmovementspeed, defaultjumpheight)
     {
 
     }
