@@ -16,28 +16,30 @@ public class hp : ExposableMonobehaviour {
     [HideInInspector, SerializeField]
     private float playerhpy;
     [HideInInspector, SerializeField]
-    private GameObject player;
+    private player play;
 
 
     public void drawhp()
     {
-        /*int currenthp = play.Currenthp;
+
+;        int currenthp = play.Currenthp;
         for(int i = 0; i < (currenthp/5); i++)
         {
-            //GameObject hppip = Instantiate (hppip, )
-        }
-        */
-    }
+            GameObject hppip = Instantiate(hppip, (0, 0, 0), 0);
+        } 
+        
+    } 
     public void maxhp(player play)
     {
-       /* int maxhp = play.Maxhp; */
-    }
+       int maxhp = play.Maxhp; 
+    } */
 	// Use this for initialization
 	void Start () {
         hpblocks = 0;
         maxhpblocks = 0;
         hpbackcontainer = gameObject.transform.GetChild(0).gameObject;
         hpcontainer = gameObject.transform.GetChild(1).gameObject;
+        play = GameObject.FindGameObjectWithTag("player").GetComponent<player>();
     }
     public float Playerhpy
     {
@@ -54,11 +56,6 @@ public class hp : ExposableMonobehaviour {
             playerhpy = value;
             drawhp();
         }
-    }
-    public GameObject Player
-    {
-        get { return player;  }
-        set { player = value; }
     }
     // Update is called once per frame
     void Update () {

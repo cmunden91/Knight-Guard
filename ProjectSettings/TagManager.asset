@@ -6,6 +6,7 @@ TagManager:
   tags:
   - hpback
   - playerhp
+  - player
   layers:
   - Default
   - TransparentFX
