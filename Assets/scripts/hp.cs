@@ -17,6 +17,7 @@ public class hp : ExposableMonobehaviour {
     private float playerhpy;
     [HideInInspector, SerializeField]
     private player play;
+    private GameObject hppip;
 
 
     public void drawhp()
@@ -25,16 +26,17 @@ public class hp : ExposableMonobehaviour {
 ;        int currenthp = play.Currenthp;
         for(int i = 0; i < (currenthp/5); i++)
         {
-            GameObject hppip = Instantiate(hppip, (0, 0, 0), 0);
+            GameObject currenthppip = Instantiate(hppip);
         } 
         
     } 
     public void maxhp(player play)
     {
        int maxhp = play.Maxhp; 
-    } */
+    } 
 	// Use this for initialization
 	void Start () {
+        hppip = Resources.Load("hppip", typeof(GameObject));
         hpblocks = 0;
         maxhpblocks = 0;
         hpbackcontainer = gameObject.transform.GetChild(0).gameObject;
