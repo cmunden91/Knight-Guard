@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic;
-public class hp : ExposableMonobehaviour {
+public class hp : ExposableMonobehaviour
+{
+
     [HideInInspector, SerializeField]
     private int hpblocks;
     [HideInInspector, SerializeField]
@@ -17,48 +18,63 @@ public class hp : ExposableMonobehaviour {
     private float playerhpy;
     [HideInInspector, SerializeField]
     private player play;
+    [HideInInspector, SerializeField]
     private GameObject hppip;
 
 
-    public void drawhp()
+    /*public void drawhp()
     {
 
 ;        int currenthp = play.Currenthp;
         for(int i = 0; i < (currenthp/5); i++)
         {
-            GameObject currenthppip = Instantiate(hppip);
+            GameObject currenthppip = Instantiate(hppip, new Vector3(playerhpx, playerhpy, 0), Quaternion.identity);
+            currenthppip.transform.SetParent(hpcontainer.transform);
         } 
         
-    } 
+    } */
     public void maxhp(player play)
     {
        int maxhp = play.Maxhp; 
-    } 
-	// Use this for initialization
-	void Start () {
-        hppip = Resources.Load("hppip", typeof(GameObject));
+    }
+    // Use this for initialization
+    void Start()
+    {
+        //hppip = (GameObject)Resources.Load("hppip", typeof(Object));
         hpblocks = 0;
         maxhpblocks = 0;
         hpbackcontainer = gameObject.transform.GetChild(0).gameObject;
         hpcontainer = gameObject.transform.GetChild(1).gameObject;
-        play = GameObject.FindGameObjectWithTag("player").GetComponent<player>();
+        //play = GameObject.FindGameObjectWithTag("player").GetComponent<player>();
+        GameObject currenthppip = Instantiate(hppip, new Vector3(-401.2f, 199.2f, 0), Quaternion.identity);
+        currenthppip.transform.SetParent(hpcontainer.transform);
     }
+    [ExposeProperty]
     public float Playerhpy
     {
         get { return playerhpy; }
         set {
             playerhpy = value;
-            drawhp();
+            
             }
     }
+    [ExposeProperty]
     public float Playerhpx
     {
         get { return playerhpy;  }
         set {
             playerhpy = value;
-            drawhp();
+           
         }
     }
+
+    [ExposeProperty]
+    public GameObject HpPip
+    {
+        get { return hppip; }
+        set { hppip = value; }
+    }
+
     // Update is called once per frame
     void Update () {
 		
