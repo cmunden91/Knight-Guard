@@ -16,27 +16,67 @@ public class hp : ExposableMonobehaviour
     private float playerhpx;
     [HideInInspector, SerializeField]
     private float playerhpy;
+    public GameObject hppip;
+    public GameObject hpback;
+    public GameObject hpbackbutt;
     [HideInInspector, SerializeField]
-    private player play;
-    [HideInInspector, SerializeField]
-    private GameObject hppip;
+    private float spacing;
+    private GameObject[] hppips;
+    private GameObject[] hpbacks;
 
-
-    /*public void drawhp()
+    public void drawhp()
     {
+        if (Application.isPlaying == true) {
+            ;        //int currenthp = play.Currenthp;
+            int currenthp = 100;
+            int maxhp = 100;
+            if (hppips != null)
+            {
+                for (int i = 0; i < hppips.Length; i++)
+                {
+                    Destroy(hppips[i]);
+                }
+                hppips = null;
+            }
 
-;        int currenthp = play.Currenthp;
-        for(int i = 0; i < (currenthp/5); i++)
-        {
-            GameObject currenthppip = Instantiate(hppip, new Vector3(playerhpx, playerhpy, 0), Quaternion.identity);
-            currenthppip.transform.SetParent(hpcontainer.transform);
-        } 
-        
-    } */
-    public void maxhp(player play)
-    {
-       int maxhp = play.Maxhp; 
+            if (hpbacks != null)
+            {
+                for (int i = 0; i < hpbacks.Length; i++)
+                {
+                    Destroy(hpbacks[i]);
+                }
+                hpbacks = null;
+            }
+
+            hppips = new GameObject[(currenthp)];
+            for (int i = 0; i < (currenthp); i++)
+            {
+                hppips[i] = Instantiate(hppip, new Vector3((playerhpx + (i * spacing)), playerhpy, 0), Quaternion.identity);
+                hppips[i].transform.SetParent(hpcontainer.transform);
+                RectTransform rt = hppips[i].GetComponent<RectTransform>();
+                rt.anchoredPosition = new Vector2((playerhpx + (i * spacing)), playerhpy);
+                
+            }
+
+            for (int i = 0; i < 100; i++)
+            {
+                if (i == 0 | i < 100 - 1)
+                {
+                    hpbacks[i] = Instantiate(hpbackbutt, new Vector3((playerhpx + (i * spacing)), playerhpy, 0), Quaternion.identity);
+                }
+                else
+                {
+                    hpbacks[i] = Instantiate(hpbackbutt, new Vector3((playerhpx + (i * spacing)), playerhpy, 0), Quaternion.identity);
+                }
+                hpbacks[i].transform.SetParent(hpbackcontainer.transform);
+                RectTransform rt = hpbacks[i].GetComponent<RectTransform>();
+                rt.anchoredPosition = new Vector2((playerhpx + (i * spacing)), playerhpy);
+            }
+
+        }
     }
+
+    
     // Use this for initialization
     void Start()
     {
@@ -46,8 +86,7 @@ public class hp : ExposableMonobehaviour
         hpbackcontainer = gameObject.transform.GetChild(0).gameObject;
         hpcontainer = gameObject.transform.GetChild(1).gameObject;
         //play = GameObject.FindGameObjectWithTag("player").GetComponent<player>();
-        GameObject currenthppip = Instantiate(hppip, new Vector3(-401.2f, 199.2f, 0), Quaternion.identity);
-        currenthppip.transform.SetParent(hpcontainer.transform);
+        drawhp();
     }
     [ExposeProperty]
     public float Playerhpy
@@ -55,25 +94,30 @@ public class hp : ExposableMonobehaviour
         get { return playerhpy; }
         set {
             playerhpy = value;
-            
+            drawhp();
             }
     }
     [ExposeProperty]
     public float Playerhpx
     {
-        get { return playerhpy;  }
+        get { return playerhpx;  }
         set {
-            playerhpy = value;
-           
+            playerhpx = value;
+            drawhp();
+        }
+    }
+    [ExposeProperty]
+    public float Spacing
+    {
+        get { return spacing; }
+        set
+        {
+            spacing = value;
+            drawhp();
         }
     }
 
-    [ExposeProperty]
-    public GameObject HpPip
-    {
-        get { return hppip; }
-        set { hppip = value; }
-    }
+
 
     // Update is called once per frame
     void Update () {
