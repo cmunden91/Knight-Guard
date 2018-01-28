@@ -62,11 +62,11 @@ public class hp : ExposableMonobehaviour
             {
                 if (i == 0 | i < 100 - 1)
                 {
-                    hpbacks[i] = Instantiate(hpbackbutt, new Vector3((playerhpx + (i * spacing)), playerhpy, 0), Quaternion.identity);
+                    hpbacks[i] = Instantiate(hpback, new Vector3((playerhpx + (i * spacing)), playerhpy, 0), Quaternion.identity);
                 }
                 else
                 {
-                    hpbacks[i] = Instantiate(hpbackbutt, new Vector3((playerhpx + (i * spacing)), playerhpy, 0), Quaternion.identity);
+                    hpbacks[i] = Instantiate(hpback, new Vector3((playerhpx + (i * spacing)), playerhpy, 0), Quaternion.identity);
                 }
                 hpbacks[i].transform.SetParent(hpbackcontainer.transform);
                 RectTransform rt = hpbacks[i].GetComponent<RectTransform>();
