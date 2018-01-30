@@ -2,32 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playercontroller : MonoBehaviour {
-    Rigidbody2D rb;
-    player play;
-
-	// Use this for initialization
-	void Start () {
+public class playercontroller : MonoBehaviour
+{
+    private Rigidbody2D rb;
+    private player play;
+    private BoxCollider2D ground;
+    private BoxCollider2D ceiling;
+    private bool isstanding;
+    // Use this for initialization
+    void Start()
+    {
         rb = GetComponent<Rigidbody2D>();
         play = GetComponent<player>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        ground = gameObject.transform.GetChild(0).GetComponent<BoxCollider2D>();
+        isstanding = false;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetButtonDown("Jump"))
         {
-            int jump = play.Jumpheight;
-            rb.velocity = Vector2.up * jump;
+            if (isstanding == true)
+            {
+                int jump = play.Jumpheight;
+                rb.velocity = Vector2.up * jump;
+            }
         }
-        if (Input.GetAxis ("Horizontal") > 0)
+        if (Input.GetAxis("Horizontal") > 0)
         {
             int move = play.Movementspeed;
-            rb.AddForce(Vector2.right, ForceMode2D.Impulse);
+            rb.velocity = new Vector2(play.Movementspeed, rb.velocity.y);
         }
         if (Input.GetAxis("Horizontal") < 0)
         {
             int move = play.Movementspeed;
-            rb.AddForce(Vector2.left, ForceMode2D.Impulse);
+            rb.velocity = new Vector2(0 - play.Movementspeed, rb.velocity.y);
         }
+        
+    }
+
+
+    void OnTriggerEnter(Collider ground)
+    {
+        Debug.Log("Test");
+        isstanding = true;
     }
 }

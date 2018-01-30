@@ -60,7 +60,7 @@ public class hp : ExposableMonobehaviour
 
             for (int i = 0; i < 100; i++)
             {
-                if (i == 0 | i < 100 - 1)
+                if (i == 0 | i == 100 - 1)
                 {
                     hpbacks[i] = Instantiate(hpback, new Vector3((playerhpx + (i * spacing)), playerhpy, 0), Quaternion.identity);
                 }
