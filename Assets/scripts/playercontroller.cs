@@ -14,7 +14,7 @@ public class playercontroller : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         play = GetComponent<player>();
-        ground = gameObject.transform.GetChild(0).GetComponent<BoxCollider2D>();
+        
         isstanding = false;
     }
 
@@ -43,9 +43,5 @@ public class playercontroller : MonoBehaviour
     }
 
 
-    void OnTriggerEnter(Collider ground)
-    {
-        Debug.Log("Test");
-        isstanding = true;
-    }
+
 }
