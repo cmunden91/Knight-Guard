@@ -1,25 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class hp : ExposableMonobehaviour
+public class hp : MonoBehaviour
 {
 
-    [HideInInspector, SerializeField]
+    [SerializeField]
     private int hpblocks;
-    [HideInInspector, SerializeField]
+    [SerializeField]
     private int maxhpblocks;
-    [HideInInspector, SerializeField]
+    [SerializeField]
     private GameObject hpcontainer;
-    [HideInInspector, SerializeField]
+    [SerializeField]
     private GameObject hpbackcontainer;
-    [HideInInspector, SerializeField]
+    [SerializeField]
     private float playerhpx;
-    [HideInInspector, SerializeField]
+    [SerializeField]
     private float playerhpy;
     public GameObject hppip;
     public GameObject hpback;
     public GameObject hpbackbutt;
-    [HideInInspector, SerializeField]
+    [SerializeField]
     private float spacing;
     private GameObject[] hppips;
     private GameObject[] hpbacks;
@@ -88,7 +88,7 @@ public class hp : ExposableMonobehaviour
         //play = GameObject.FindGameObjectWithTag("player").GetComponent<player>();
         drawhp();
     }
-    [ExposeProperty]
+    [HideInInspector]
     public float Playerhpy
     {
         get { return playerhpy; }
@@ -97,7 +97,7 @@ public class hp : ExposableMonobehaviour
             drawhp();
             }
     }
-    [ExposeProperty]
+    [HideInInspector]
     public float Playerhpx
     {
         get { return playerhpx;  }
@@ -106,7 +106,7 @@ public class hp : ExposableMonobehaviour
             drawhp();
         }
     }
-    [ExposeProperty]
+    [HideInInspector]
     public float Spacing
     {
         get { return spacing; }

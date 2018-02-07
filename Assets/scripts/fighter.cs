@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class fighter : entity
 {
-    [HideInInspector, SerializeField]
+    [SerializeField]
     private int currenthp;
-    [HideInInspector, SerializeField]
+    [SerializeField]
     private int maxhp;
-    [HideInInspector, SerializeField]
+    [SerializeField]
     private bool hostile;
 
     public fighter(string name, bool interactable, int currenthp, int maxhp, bool hostile, int movementspeed, int jumpheight) : base(name, interactable, movementspeed, jumpheight)
@@ -18,21 +18,21 @@ public class fighter : entity
         this.hostile = hostile;
     }
 
-    [ExposeProperty]
+    [HideInInspector]
     public int Currenthp
     {
         get { return currenthp; }
         set { currenthp = value; }
     }
 
-    [ExposeProperty]
+    [HideInInspector]
     public int Maxhp
     {
         get { return maxhp; }
         set { maxhp = value; }
     }
 
-    [ExposeProperty]
+    [HideInInspector]
     public bool Hostile
     {
         get { return hostile; }

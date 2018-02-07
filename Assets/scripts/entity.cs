@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class entity : ExposableMonobehaviour
+public abstract class entity : MonoBehaviour
 {
-    [HideInInspector, SerializeField]
+    [SerializeField]
     private string name;
-    [HideInInspector, SerializeField]
+    [SerializeField]
     private bool interactable;
-    [HideInInspector, SerializeField]
+    [SerializeField]
     private int movementspeed;
-    [HideInInspector, SerializeField]
+    [SerializeField]
     private int jumpheight;
 
     public entity(string name, bool interactable, int movementspeed, int jumpheight)
@@ -21,26 +21,26 @@ public abstract class entity : ExposableMonobehaviour
         this.jumpheight = jumpheight;
     }
 
-    [ExposeProperty]
+    [HideInInspector]
     public string Name
     {
         get { return name; }
         set { name = value; }
     }
 
-    [ExposeProperty]
+    [HideInInspector]
     public bool Interactable
     {
         get { return interactable; }
         set { interactable = value; }
     }
-    [ExposeProperty]
+    [HideInInspector]
     public int Movementspeed
     {
         get { return movementspeed; }
         set { movementspeed = value; }
     }
-    [ExposeProperty]
+    [HideInInspector]
     public int Jumpheight
     {
         get { return jumpheight; }

@@ -4,26 +4,32 @@ using UnityEngine;
 
 public class playercontroller : MonoBehaviour
 {
+    [SerializeField]
     private Rigidbody2D rb;
+    [SerializeField]
     private player play;
-    private BoxCollider2D ground;
-    private BoxCollider2D ceiling;
-    private bool isstanding;
+    [SerializeField]
+    private Transform ground;
+    [SerializeField]
+    private Transform ceiling;
+    [SerializeField]
+    private float groundcircleradius;
+    [SerializeField]
+    private bool isgrounded;
+    [SerializeField]
+    private LayerMask whatisground;
     // Use this for initialization
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        play = GetComponent<player>();
-        
-        isstanding = false;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        isgrounded = Physics2D.OverlapCircle(ground.position, groundcircleradius, whatisground);
         if (Input.GetButtonDown("Jump"))
         {
-            if (isstanding == true)
+            if (isgrounded == true)
             {
                 int jump = play.Jumpheight;
                 rb.velocity = Vector2.up * jump;
