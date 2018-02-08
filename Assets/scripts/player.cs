@@ -11,11 +11,12 @@ public class player : fighter {
     private static int defaultjumpheight = 1;
     public player() : base(name, interactable, defaulthealth, defaulthealth, hostile, defaultmovementspeed, defaultjumpheight)
     {
-
+		
     }
 
     // Use this for initialization
     void Start () {
+		
 		
 	}
 	

@@ -1304,8 +1304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7726a6460d9a5c342a66d5c795c7d77b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ground: {fileID: 0}
-  player: {fileID: 2143678854}
 --- !u!1 &1435360851
 GameObject:
   m_ObjectHideFlags: 0
@@ -2172,3 +2170,4 @@ MonoBehaviour:
   currenthp: 100
   maxhp: 100
   hostile: 0
+  rb: {fileID: 2143678858}

@@ -21,6 +21,7 @@ public class playercontroller : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		rb.freezeRotation = true;
     }
 
     // Update is called once per frame
