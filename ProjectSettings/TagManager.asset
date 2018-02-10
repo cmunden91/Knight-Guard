@@ -7,6 +7,7 @@ TagManager:
   - hpback
   - playerhp
   - player
+  - climbable
   layers:
   - Default
   - TransparentFX

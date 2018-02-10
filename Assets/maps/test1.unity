@@ -824,6 +824,7 @@ GameObject:
   - component: {fileID: 639516813}
   - component: {fileID: 639516812}
   - component: {fileID: 639516811}
+  - component: {fileID: 639516814}
   m_Layer: 9
   m_Name: TopSoil (Level 1) (3)
   m_TagString: Untagged
@@ -896,6 +897,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &639516814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 639516810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d78d042eb42de94fa06c8361d2194e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider: {fileID: 2024648036}
+  wallclimb: {fileID: 6200000, guid: c193eb12c6ce6ab468f2c4b189a770f6, type: 2}
 --- !u!1 &663789132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1261,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1251667845}
   - component: {fileID: 1251667846}
-  - component: {fileID: 1251667847}
   m_Layer: 0
   m_Name: Floor Detection
   m_TagString: Untagged
@@ -1293,17 +1306,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.817748, y: 0.6695013}
   m_EdgeRadius: 0
---- !u!114 &1251667847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1251667844}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7726a6460d9a5c342a66d5c795c7d77b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1435360851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,7 +1318,7 @@ GameObject:
   m_Layer: 0
   m_Name: Ceiling Dectection
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1327,7 +1329,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1435360851}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.78, z: 0}
+  m_LocalPosition: {x: 0, y: 3.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2143678856}
@@ -1396,7 +1398,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1552834750}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1d3bb2635700c5c45ad67f4b9ff633c8, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1803,7 +1805,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2024648034}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1d3bb2635700c5c45ad67f4b9ff633c8, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2131,7 +2133,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &2143678859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2170,4 +2172,3 @@ MonoBehaviour:
   currenthp: 100
   maxhp: 100
   hostile: 0
-  rb: {fileID: 2143678858}
