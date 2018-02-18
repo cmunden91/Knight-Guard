@@ -2,27 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class wallgrab : MonoBehaviour {
-	[SerializeField]
-	private BoxCollider2D collider;
+public class wallgrab : MonoBehaviour
+{
     [SerializeField]
-    private PhysicsMaterial2D wallclimb;
+    private BoxCollider2D collider;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-	void OnTriggerEnter2D(Collider2D col) {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
         if (col.GetComponent<player>() != null)
         {
-            col.GetComponent<playercontroller>().Isgrounded = true;
-            collider.sharedMaterial = wallclimb; 
+            playercontroller controller = col.GetComponent<playercontroller>();
+            controller. Wallgrab(true);
+            //collider.sharedMaterial = wallclimb;
         }
-	}
-
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.GetComponent<player>() != null)
+        {
+            playercontroller controller = col.GetComponent<playercontroller>();
+            controller.Wallgrab(false);
+        }
+    }
 }
