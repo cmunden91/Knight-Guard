@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/maps/FirstLevel.unity
+    guid: b9d1c20adb519f34e9f9e78bc2db2d46
