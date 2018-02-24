@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playercontroller : MonoBehaviour
+public class playercontroller : controller
 {
-    [SerializeField]
-    private Rigidbody2D rb;
-    [SerializeField]
-    private player play;
+
+
     [SerializeField]
     private Transform ground;
     [SerializeField]
@@ -21,6 +19,7 @@ public class playercontroller : MonoBehaviour
     [SerializeField]
     private int slowspeed;
     private bool isgrabbing = false;
+
     // Use this for initialization
     void Start()
     {
@@ -93,23 +92,6 @@ public class playercontroller : MonoBehaviour
             rb.drag = 0;
         }
 
-    }
-    public void Moveright()
-    {
-        {
-            int move = play.Movementspeed;
-            rb.velocity = new Vector2(play.Movementspeed, rb.velocity.y);
-        }
-    }
-    public void Moveleft()
-    {
-        int move = play.Movementspeed;
-        rb.velocity = new Vector2(0 - play.Movementspeed, rb.velocity.y);
-    }
-    public void Jump()
-    {
-        int jump = play.Jumpheight;
-        rb.velocity = Vector2.up * jump;
     }
 
 }

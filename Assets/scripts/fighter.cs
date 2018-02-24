@@ -11,12 +11,7 @@ public class fighter : entity
     [SerializeField]
     private bool hostile;
 
-    public fighter(string name, bool interactable, int currenthp, int maxhp, bool hostile, int movementspeed, int jumpheight) : base(name, interactable, movementspeed, jumpheight)
-    {
-        this.currenthp = currenthp;
-        this.maxhp = maxhp;
-        this.hostile = hostile;
-    }
+
 
     [HideInInspector]
     public int Currenthp

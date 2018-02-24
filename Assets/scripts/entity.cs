@@ -13,13 +13,7 @@ public abstract class entity : MonoBehaviour
     [SerializeField]
     private int jumpheight;
 
-    public entity(string name, bool interactable, int movementspeed, int jumpheight)
-    {
-        this.name = name;
-        this.interactable = interactable;
-        this.movementspeed = movementspeed;
-        this.jumpheight = jumpheight;
-    }
+
 
     [HideInInspector]
     public string Name
