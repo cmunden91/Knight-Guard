@@ -19,6 +19,8 @@ public class playercontroller : controller
     [SerializeField]
     private int slowspeed;
     private bool isgrabbing = false;
+    private float fallcheck;
+    private bool isfalling = false;
 
     // Use this for initialization
     void Start()
@@ -28,8 +30,13 @@ public class playercontroller : controller
     // Update is called once per frame
     void FixedUpdate()
 	{
-        if (isgrabbing == false)
+        if (fallcheck != null)
         {
+            if (gameObject.transform.position.y < fallcheck)
+            {
+                print("Test");
+            }
+        }
             isgrounded = Physics2D.OverlapCircle(ground.position, groundcircleradius, whatisground);
             if (Input.GetButtonDown("Jump"))
             {
@@ -46,22 +53,9 @@ public class playercontroller : controller
             {
                 Moveleft();
             }
-        }
-        else
-        {
-            if (Input.GetAxis("Horizontal") > 0 && Input.GetButtonDown("Jump"))
-            {
-                Jump();
-                Moveright();
-            }
-            if (Input.GetAxis("Horizontal") < 0 && Input.GetButtonDown("Jump"))
-            {
-                Jump();
-                Moveleft();
-            }
-        }
 
-        
+
+        fallcheck = gameObject.transform.position.y;  
 	}
 	void OnCollisionEnter(Collision collision) {
 		Debug.Log(collision);
