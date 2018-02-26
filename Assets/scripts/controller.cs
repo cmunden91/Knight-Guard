@@ -10,21 +10,40 @@ public class controller : MonoBehaviour {
 
 
     public void Moveright()
-    {
-        {
-            int move = ent.Movementspeed;
+    {  
             rb.velocity = new Vector2(ent.Movementspeed, rb.velocity.y);
-        }
+        
+    }
+    public void Moveright(float multiplier)
+    {
+        rb.velocity = rb.velocity = new Vector2((ent.Movementspeed*multiplier), rb.velocity.y);
     }
     public void Moveleft()
     {
-        int move = ent.Movementspeed;
         rb.velocity = new Vector2(0 - ent.Movementspeed, rb.velocity.y);
+    }
+    public void Moveleft(float multiplier)
+    {
+        rb.velocity = new Vector2((0 - ent.Movementspeed*multiplier), rb.velocity.y);
     }
     public void Jump()
     {
         int jump = ent.Jumpheight;
         rb.velocity = Vector2.up * jump;
+    }
+    public void SideJump(bool side)
+    {
+        if (side == false)
+        {
+            
+            Moveright(10f);
+            Jump();
+        }
+        if (side == true)
+        {
+            Moveleft(10f);
+            Jump();
+        }
     }
     [HideInInspector]
     public Rigidbody2D Rb
