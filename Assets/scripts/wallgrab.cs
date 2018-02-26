@@ -18,7 +18,8 @@ public class wallgrab : MonoBehaviour
     {
 
     }
-    void OnTriggerEnter2D(Collider2D col)
+
+ /*   void OnTriggerEnter2D(Collider2D col)
     {
         if (col.GetComponent<player>() != null)
         {
@@ -26,13 +27,13 @@ public class wallgrab : MonoBehaviour
             controller. Wallgrab(true);
             //collider.sharedMaterial = wallclimb;
         }
-    }
-    void OnTriggerExit2D(Collider2D col)
+    } */
+  /*  void OnTriggerExit2D(Collider2D col)
     {
         if (col.GetComponent<player>() != null)
         {
             playercontroller controller = col.GetComponent<playercontroller>();
             controller.Wallgrab(false);
         }
-    }
-}
+    } */
+} 
