@@ -41,7 +41,6 @@ public class playercontroller : controller
         {
             if (gameObject.transform.position.y < fallcheck)
             {
-                print("Test");
                 bool cangrableft = Physics2D.OverlapCircle(leftwalldetection.position, wallcheckradius, whatisground);
                 bool cangrabright = Physics2D.OverlapCircle(rightwalldetection.position, wallcheckradius, whatisground);
                 if (cangrableft == true)
@@ -62,7 +61,6 @@ public class playercontroller : controller
                         rb.drag = slowspeed;
                         if (Input.GetButtonDown("Jump"))
                         {
-                            Debug.Log("Jump Detected");
                             SideJump(true);
                         }
                     }

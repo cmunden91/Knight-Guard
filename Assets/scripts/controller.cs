@@ -7,42 +7,42 @@ public class controller : MonoBehaviour {
     protected Rigidbody2D rb;
     [SerializeField]
     protected entity ent;
+    [SerializeField]
+    protected Transform transf;
 
 
     public void Moveright()
-    {  
-            rb.velocity = new Vector2(ent.Movementspeed, rb.velocity.y);
+    {
+        transform.position += Vector3.right * Time.deltaTime * ent.Movementspeed;
         
     }
     public void Moveright(float multiplier)
     {
-        rb.velocity = rb.velocity = new Vector2((ent.Movementspeed*multiplier), rb.velocity.y);
+        transform.position += Vector3.right * Time.deltaTime * (ent.Movementspeed*multiplier);
     }
     public void Moveleft()
     {
-        rb.velocity = new Vector2(0 - ent.Movementspeed, rb.velocity.y);
+        transform.position += Vector3.left * Time.deltaTime * ent.Movementspeed;
     }
     public void Moveleft(float multiplier)
     {
-        rb.velocity = new Vector2((0 - ent.Movementspeed*multiplier), rb.velocity.y);
+        transform.position += Vector3.left * Time.deltaTime * (ent.Movementspeed*multiplier);
     }
     public void Jump()
     {
-        int jump = ent.Jumpheight;
-        rb.velocity = Vector2.up * jump;
+        rb.velocity = Vector2.up * ent.Jumpheight;
     }
     public void SideJump(bool side)
     {
         if (side == false)
         {
-            
-            Moveright(10f);
             Jump();
+            Moveright(7f);
         }
         if (side == true)
         {
-            Moveleft(10f);
             Jump();
+            Moveleft(7f);
         }
     }
     [HideInInspector]
