@@ -9,12 +9,25 @@ public class controller : MonoBehaviour {
     protected entity ent;
     [SerializeField]
     protected Transform transf;
+    [SerializeField]
+    private Animator animator;
+    [SerializeField]
+    private bool isfacingright = true;
+    [SerializeField]
+    private GameObject model;
 
 
     public void Moveright()
     {
+        if (isfacingright == false)
+        {
+            model.transform.Rotate(new Vector3(0, 180, 0));
+            isfacingright = true;
+        }
         transform.position += Vector3.right * Time.deltaTime * ent.Movementspeed;
-        
+        animator.SetFloat("speed", Time.deltaTime * ent.Movementspeed);
+
+
     }
     public void Moveright(float multiplier)
     {
@@ -22,11 +35,21 @@ public class controller : MonoBehaviour {
     }
     public void Moveleft()
     {
+        if (isfacingright == true)
+        {
+            model.transform.Rotate(new Vector3(0, -180, 0));
+            isfacingright = false;
+        }
         transform.position += Vector3.left * Time.deltaTime * ent.Movementspeed;
+        animator.SetFloat("speed", Time.deltaTime * ent.Movementspeed);
     }
     public void Moveleft(float multiplier)
     {
         transform.position += Vector3.left * Time.deltaTime * (ent.Movementspeed*multiplier);
+    }
+    public void Idle()
+    {
+        animator.SetFloat("speed", 0);
     }
     public void Jump()
     {

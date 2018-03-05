@@ -87,6 +87,10 @@ public class playercontroller : controller
             {
                 Moveleft();
             }
+            if (Input.GetAxis("Horizontal") == 0)
+            {
+            Idle();
+            }
 
 
         fallcheck = gameObject.transform.position.y;  
