@@ -50,7 +50,7 @@ public class playercontroller : controller
                         rb.drag = slowspeed;
                         if (Input.GetButtonDown("Jump"))
                         {
-                            SideJump(false);
+                            SideJump(false, ent.Jumpheight, ent.Movementspeed, Input.GetAxis("Horizontal"));
                         }
                     }
                 }
@@ -61,7 +61,7 @@ public class playercontroller : controller
                         rb.drag = slowspeed;
                         if (Input.GetButtonDown("Jump"))
                         {
-                            SideJump(true);
+                            SideJump(true, ent.Jumpheight, ent.Movementspeed, Input.GetAxis("Horizontal"));
                         }
                     }
                 }
@@ -76,16 +76,16 @@ public class playercontroller : controller
             {
                 if (isgrounded == true)
                 {
-                    Jump();
+                    Jump(ent.Jumpheight);
                 }
             }
             if (Input.GetAxis("Horizontal") > 0)
             {
-                Moveright();
+                Moveright(ent.Movementspeed, Input.GetAxis("Horizontal"));
             }
             if (Input.GetAxis("Horizontal") < 0)
             {
-                Moveleft();
+                Moveleft(ent.Movementspeed, Input.GetAxis("Horizontal"));
             }
             if (Input.GetAxis("Horizontal") == 0)
             {

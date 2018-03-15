@@ -17,55 +17,49 @@ public class controller : MonoBehaviour {
     private GameObject model;
 
 
-    public void Moveright()
+    public void Moveright(float move, float axis)
     {
         if (isfacingright == false)
         {
             model.transform.Rotate(new Vector3(0, 180, 0));
             isfacingright = true;
         }
-        transform.position += Vector3.right * Time.deltaTime * ent.Movementspeed;
-        animator.SetFloat("speed", Time.deltaTime * ent.Movementspeed);
+       rb.velocity = new Vector2(move * axis, rb.velocity.y);
+        animator.SetFloat("speed", move * axis);
 
 
     }
-    public void Moveright(float multiplier)
-    {
-        transform.position += Vector3.right * Time.deltaTime * (ent.Movementspeed*multiplier);
-    }
-    public void Moveleft()
+    public void Moveleft(float move, float axis)
     {
         if (isfacingright == true)
         {
             model.transform.Rotate(new Vector3(0, -180, 0));
             isfacingright = false;
         }
-        transform.position += Vector3.left * Time.deltaTime * ent.Movementspeed;
-        animator.SetFloat("speed", Time.deltaTime * ent.Movementspeed);
+        rb.velocity = new Vector2(move * axis, rb.velocity.y);
+        animator.SetFloat("speed", (move * axis)*-1);
     }
-    public void Moveleft(float multiplier)
-    {
-        transform.position += Vector3.left * Time.deltaTime * (ent.Movementspeed*multiplier);
-    }
+
     public void Idle()
     {
+        rb.velocity = new Vector2(0, rb.velocity.y);
         animator.SetFloat("speed", 0);
     }
-    public void Jump()
+    public void Jump(float jumpheight)
     {
-        rb.velocity = Vector2.up * ent.Jumpheight;
+        rb.velocity = Vector2.up * jumpheight;
     }
-    public void SideJump(bool side)
+    public void SideJump(bool side, float jumpheight, float move, float axis)
     {
         if (side == false)
         {
-            Jump();
-            Moveright(7f);
+            Jump(jumpheight);
+            Moveright(move, axis);
         }
         if (side == true)
         {
-            Jump();
-            Moveleft(7f);
+            Jump(jumpheight);
+            Moveleft(move, axis);
         }
     }
     [HideInInspector]
