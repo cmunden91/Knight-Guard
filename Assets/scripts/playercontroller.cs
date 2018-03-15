@@ -24,9 +24,13 @@ public class playercontroller : controller
     private Transform rightwalldetection;
     [SerializeField]
     private Transform leftwalldetection;
+    [SerializeField]
+    private int walljumptime;
     private bool isgrabbing = false;
     private float fallcheck;
     private bool isfalling = false;
+    private bool iswalljumping = false;
+    private int fixedupdatecounter = 0;
 
     // Use this for initialization
     void Start()
@@ -36,7 +40,23 @@ public class playercontroller : controller
 
     // Update is called once per frame
     void FixedUpdate()
-	{
+    {
+         if (iswalljumping == true)
+         {
+             fixedupdatecounter++;
+             if (walljumptime - fixedupdatecounter > 0)
+             {
+                 return;
+             }
+             else
+             {
+                 fixedupdatecounter = 0;
+                 iswalljumping = false;
+             }
+         }
+          else
+         { 
+
         if (fallcheck != -9999999999999)
         {
             if (gameObject.transform.position.y < fallcheck)
@@ -50,7 +70,8 @@ public class playercontroller : controller
                         rb.drag = slowspeed;
                         if (Input.GetButtonDown("Jump"))
                         {
-                            SideJump(false, ent.Jumpheight, ent.Movementspeed, Input.GetAxis("Horizontal"));
+                            SideJump(false, ent.Jumpheight*2, ent.Movementspeed*2, Input.GetAxis("Horizontal")*-1);
+                                iswalljumping = true;
                         }
                     }
                 }
@@ -61,7 +82,8 @@ public class playercontroller : controller
                         rb.drag = slowspeed;
                         if (Input.GetButtonDown("Jump"))
                         {
-                            SideJump(true, ent.Jumpheight, ent.Movementspeed, Input.GetAxis("Horizontal"));
+                            SideJump(true, ent.Jumpheight*2, ent.Movementspeed*2, Input.GetAxis("Horizontal")*-1);
+                                iswalljumping = true;
                         }
                     }
                 }
@@ -71,30 +93,33 @@ public class playercontroller : controller
                 }
             }
         }
-            isgrounded = Physics2D.OverlapCircle(ground.position, groundcircleradius, whatisground);
-            if (Input.GetButtonDown("Jump"))
+        isgrounded = Physics2D.OverlapCircle(ground.position, groundcircleradius, whatisground);
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (isgrounded == true)
             {
-                if (isgrounded == true)
-                {
-                    Jump(ent.Jumpheight);
-                }
+                Jump(ent.Jumpheight);
             }
-            if (Input.GetAxis("Horizontal") > 0)
-            {
-                Moveright(ent.Movementspeed, Input.GetAxis("Horizontal"));
-            }
-            if (Input.GetAxis("Horizontal") < 0)
-            {
-                Moveleft(ent.Movementspeed, Input.GetAxis("Horizontal"));
-            }
-            if (Input.GetAxis("Horizontal") == 0)
-            {
+        }
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            Moveright(ent.Movementspeed, Input.GetAxis("Horizontal"));
+        }
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            Moveleft(ent.Movementspeed, Input.GetAxis("Horizontal"));
+        }
+        if (Input.GetAxis("Horizontal") == 0)
+        {
             Idle();
-            }
+        }
 
 
-        fallcheck = gameObject.transform.position.y;  
-	}
+        fallcheck = gameObject.transform.position.y;
+    }
+}
+
+
 	void OnCollisionEnter(Collision collision) {
 		Debug.Log(collision);
 	}
