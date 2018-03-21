@@ -25,6 +25,7 @@ public class controller : MonoBehaviour {
             isfacingright = true;
         }
        rb.velocity = new Vector2(move * axis, rb.velocity.y);
+        Debug.Log("Move right invoked");
         animator.SetFloat("speed", move * axis);
 
 
@@ -37,6 +38,7 @@ public class controller : MonoBehaviour {
             isfacingright = false;
         }
         rb.velocity = new Vector2(move * axis, rb.velocity.y);
+        Debug.Log("Move left invoked");
         animator.SetFloat("speed", (move * axis)*-1);
     }
 
@@ -49,14 +51,15 @@ public class controller : MonoBehaviour {
     {
         rb.velocity = Vector2.up * jumpheight;
     }
-    public void SideJump(bool side, float jumpheight, float move, float axis)
+    public void SideJump(bool isfacingright, float jumpheight, float move, float axis)
     {
-        if (side == false)
+        Debug.Log("Side jump invoked");
+        if (isfacingright == false)
         {
             Jump(jumpheight);
             Moveright(move, axis);
         }
-        if (side == true)
+        if (isfacingright == true)
         {
             Jump(jumpheight);
             Moveleft(move, axis);
