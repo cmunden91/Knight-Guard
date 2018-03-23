@@ -65,6 +65,13 @@ public class controller : MonoBehaviour {
             Moveleft(move, axis);
         }
     }
+
+    public void Attack(float attacktime)
+    {
+        float timetoattackfinish = Time.deltaTime + attacktime;
+        animator.SetBool("isattacking", true);
+        
+    }
     [HideInInspector]
     public Rigidbody2D Rb
     {

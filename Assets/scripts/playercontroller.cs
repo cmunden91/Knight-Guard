@@ -115,6 +115,11 @@ public class playercontroller : controller
             {
                 Idle();
             }
+            if (Input.GetButtonDown("Fire1"))
+        {
+            Attack(1);
+        }
+            else 
 
 
             fallcheck = gameObject.transform.position.y;
