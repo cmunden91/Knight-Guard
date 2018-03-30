@@ -30,6 +30,8 @@ public class playercontroller : controller
     private int walljumpjumpmult;
     [SerializeField]
     private int walljumpmovemult;
+    [SerializeField]
+    private GameObject pausemenu;
     private bool isgrabbing = false;
     private float fallcheck;
     private bool isfalling = false;
@@ -115,6 +117,11 @@ public class playercontroller : controller
             {
                 Idle();
             }
+            if (Input.GetButtonDown("Cancel"))
+        {
+            Time.timeScale = 0;
+            pausemenu.SetActive(true);
+        }
             if (Input.GetButtonDown("Fire1"))
         {
             Attack(1);
