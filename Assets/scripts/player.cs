@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class player : fighter {
     [SerializeField]
-    HUD hud;
+    private HUD hud;
 
     // Use this for initialization
     void Start () {
@@ -16,6 +16,13 @@ public class player : fighter {
 	void Update () {
 		
 	}
+    public new void takedamage(int amount, float force)
+    {
+        if (base.takedamage(amount, force) == true)
+        {
+            hud.playerbarupdate();
+        }
+    }
 
-    
+
 }

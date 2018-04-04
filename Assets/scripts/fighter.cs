@@ -10,6 +10,14 @@ public class fighter : entity
     private int maxhp;
     [SerializeField]
     private bool hostile;
+    [SerializeField]
+    private float invinciblitytime;
+    [SerializeField]
+    protected int damageofattack;
+    [SerializeField]
+    protected float forceofattack;
+    private bool invincible;
+    private float timeoflasthit;
 
 
 
@@ -32,5 +40,32 @@ public class fighter : entity
     {
         get { return hostile; }
         set { hostile = value; }
+    }
+    public bool takedamage(int amount, float force)
+    {
+        
+        if (invincible == false)
+        {
+            Currenthp = Currenthp-amount;
+            controller.knockback(force);
+            timeoflasthit = Time.time;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+
+    }
+    public void FixedUpdate()
+    {
+        if (invincible == true)
+        {
+            if (Time.time >= (timeoflasthit + invinciblitytime))
+            {
+                invincible = false;
+            }
+        }
     }
 }

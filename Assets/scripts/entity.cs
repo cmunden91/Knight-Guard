@@ -12,6 +12,8 @@ public abstract class entity : MonoBehaviour
     private int movementspeed;
     [SerializeField]
     private int jumpheight;
+    [SerializeField]
+    protected controller controller;
 
 
 

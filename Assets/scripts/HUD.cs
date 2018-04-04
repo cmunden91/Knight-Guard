@@ -14,13 +14,17 @@ public class HUD : MonoBehaviour {
     private float defaultbackx;
     private float defaultbarx;
     private fighter player;
+    private float backinticaloffset;
+    private float barinticaloffset;
 
     public void Start()
     {
-        RectTransform hpbarbacktransform = hpbarback.GetComponent<RectTransform>();
-        RectTransform hpbartransform = hpbar.GetComponent<RectTransform>();
-        defaultbackx = hpbarbacktransform.sizeDelta.x;
-        defaultbarx = hpbartransform.sizeDelta.x;
+       hpbarbacktransform = hpbarback.GetComponent<RectTransform>();
+       hpbartransform = hpbar.GetComponent<RectTransform>();
+		defaultbackx = hpbarbacktransform.sizeDelta.x;
+		defaultbarx = hpbartransform.sizeDelta.x;
+        backinticaloffset = hpbarbacktransform.anchoredPosition.x;
+        barinticaloffset = hpbartransform.anchoredPosition.x;
     }
 
     public void playerbaractive(fighter player)
@@ -34,7 +38,9 @@ public class HUD : MonoBehaviour {
     }
     public void playerbarupdate()
     {
-        hpbarbacktransform.sizeDelta = new Vector2(defaultbackx + (player.Maxhp * hpsizemultiplyer), hpbarbacktransform.sizeDelta.y);
-        hpbartransform.sizeDelta = new Vector2(defaultbarx + (player.Currenthp * hpsizemultiplyer), hpbartransform.sizeDelta.y);
+		hpbarbacktransform.sizeDelta = new Vector3(defaultbackx + (player.Maxhp * hpsizemultiplyer), hpbarbacktransform.sizeDelta.y, hpbarbacktransform.localScale.z);
+		hpbartransform.sizeDelta = new Vector3(defaultbarx + (player.Currenthp * hpsizemultiplyer), hpbartransform.sizeDelta.y, hpbartransform.localScale.z);
+        hpbarbacktransform.anchoredPosition = new Vector2((backinticaloffset + (player.Maxhp * hpsizemultiplyer))/2, hpbarbacktransform.anchoredPosition.y);
+        hpbartransform.anchoredPosition = new Vector2((barinticaloffset + (player.Currenthp * hpsizemultiplyer))/2, hpbartransform.anchoredPosition.y);
     }
 }

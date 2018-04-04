@@ -25,7 +25,6 @@ public class controller : MonoBehaviour {
             isfacingright = true;
         }
        rb.velocity = new Vector2(move * axis, rb.velocity.y);
-        Debug.Log("Move right invoked");
         animator.SetFloat("speed", move * axis);
 
 
@@ -38,7 +37,6 @@ public class controller : MonoBehaviour {
             isfacingright = false;
         }
         rb.velocity = new Vector2(move * axis, rb.velocity.y);
-        Debug.Log("Move left invoked");
         animator.SetFloat("speed", (move * axis)*-1);
     }
 
@@ -83,5 +81,17 @@ public class controller : MonoBehaviour {
     {
         get { return ent; }
         set { value = ent; }
+    }
+    public void knockback(float force)
+    {
+        if (isfacingright == true)
+        {
+            rb.AddForce(new Vector2(force*-1, 0));
+        }
+        else
+        {
+            rb.AddForce(new Vector2(force, 0));
+        }
+        
     }
 }
