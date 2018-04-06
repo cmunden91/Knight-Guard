@@ -9,7 +9,7 @@ public class fighter : entity
     [SerializeField]
     private int maxhp;
     [SerializeField]
-    private bool hostile;
+    private bool isHostile;
     [SerializeField]
     private float invinciblitytime;
     [SerializeField]
@@ -25,7 +25,14 @@ public class fighter : entity
     public int Currenthp
     {
         get { return currenthp; }
-        set { currenthp = value; }
+        set
+        {
+            currenthp = value;
+            if (currenthp <= 0)
+            {
+                death();
+            }
+        }
     }
 
     [HideInInspector]
@@ -36,17 +43,17 @@ public class fighter : entity
     }
 
     [HideInInspector]
-    public bool Hostile
+    public bool IsHostile
     {
-        get { return hostile; }
-        set { hostile = value; }
+        get { return isHostile; }
+        set { isHostile = value; }
     }
     public bool takedamage(int amount, float force)
     {
-        
+
         if (invincible == false)
         {
-            Currenthp = Currenthp-amount;
+            Currenthp = Currenthp - amount;
             controller.knockback(force);
             timeoflasthit = Time.time;
             return true;
@@ -55,9 +62,15 @@ public class fighter : entity
         {
             return false;
         }
-        
-
     }
+
+
+
+    public void death()
+    {
+        Destroy(gameObject);
+    }
+
     public void FixedUpdate()
     {
         if (invincible == true)
