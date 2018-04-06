@@ -37,6 +37,8 @@ public class playercontroller : controller
     private bool isfalling = false;
     private bool iswalljumping = false;
     private int fixedupdatecounter = 0;
+    private float xaxis;
+    private const float INVALIDFALLCHECK = -9999999999999;
 
     // Use this for initialization
     void Start()
@@ -47,55 +49,12 @@ public class playercontroller : controller
     // Update is called once per frame
     void FixedUpdate()
     {
-        float xaxis = Input.GetAxis("Horizontal");
-        if (iswalljumping == true)
-        {
-            fixedupdatecounter++;
-            if (walljumptime - fixedupdatecounter > 0)
+        xaxis = Input.GetAxis("Horizontal");
+        walljump();
+
+            if (fallcheck != INVALIDFALLCHECK)
             {
-                xaxis = xaxis * -1;
-            }
-            else
-            {
-                fixedupdatecounter = 0;
-                iswalljumping = false;
-            }
-        }
-            if (fallcheck != -9999999999999)
-            {
-                if (gameObject.transform.position.y < fallcheck)
-                {
-                    bool cangrableft = Physics2D.OverlapCircle(leftwalldetection.position, wallcheckradius, whatisground);
-                    bool cangrabright = Physics2D.OverlapCircle(rightwalldetection.position, wallcheckradius, whatisground);
-                    if (cangrableft == true)
-                    {
-                        if (xaxis < 0)
-                        {
-                            rb.drag = slowspeed;
-                            if (Input.GetButtonDown("Jump"))
-                            {
-                                SideJump(true, ent.Jumpheight * walljumpjumpmult, ent.Movementspeed * walljumpmovemult, xaxis);
-                                iswalljumping = true;
-                            }
-                        }
-                    }
-                    else if (cangrabright == true)
-                    {
-                        if (xaxis > 0)
-                        {
-                            rb.drag = slowspeed;
-                            if (Input.GetButtonDown("Jump"))
-                            {
-                                SideJump(false, ent.Jumpheight * walljumpjumpmult, ent.Movementspeed * walljumpmovemult, xaxis);
-                                iswalljumping = true;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        rb.drag = 0;
-                    }
-                }
+                grab();
             }
             isgrounded = Physics2D.OverlapCircle(ground.position, groundcircleradius, whatisground);
             if (Input.GetButtonDown("Jump"))
@@ -131,8 +90,58 @@ public class playercontroller : controller
 
             fallcheck = gameObject.transform.position.y;
         }
-    
-
+    private void grab()
+    {
+        if (gameObject.transform.position.y < fallcheck)
+        {
+            bool cangrableft = Physics2D.OverlapCircle(leftwalldetection.position, wallcheckradius, whatisground);
+            bool cangrabright = Physics2D.OverlapCircle(rightwalldetection.position, wallcheckradius, whatisground);
+            if (cangrableft == true)
+            {
+                if (xaxis < 0)
+                {
+                    rb.drag = slowspeed;
+                    if (Input.GetButtonDown("Jump"))
+                    {
+                        SideJump(true, ent.Jumpheight * walljumpjumpmult, ent.Movementspeed * walljumpmovemult, xaxis);
+                        iswalljumping = true;
+                    }
+                }
+            }
+            else if (cangrabright == true)
+            {
+                if (xaxis > 0)
+                {
+                    rb.drag = slowspeed;
+                    if (Input.GetButtonDown("Jump"))
+                    {
+                        SideJump(false, ent.Jumpheight * walljumpjumpmult, ent.Movementspeed * walljumpmovemult, xaxis);
+                        iswalljumping = true;
+                    }
+                }
+            }
+            else
+            {
+                rb.drag = 0;
+            }
+        }
+    }
+    private void walljump()
+    {
+        if (iswalljumping == true)
+        {
+            fixedupdatecounter++;
+            if (walljumptime - fixedupdatecounter > 0)
+            {
+                xaxis = xaxis * -1;
+            }
+            else
+            {
+                fixedupdatecounter = 0;
+                iswalljumping = false;
+            }
+        }
+    }
 
 	void OnCollisionEnter(Collision collision) {
 		Debug.Log(collision);

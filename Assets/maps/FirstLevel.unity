@@ -18801,7 +18801,7 @@ Prefab:
     - target: {fileID: 114472458513006112, guid: dfa439ba8276b2647a4e5be253a91689,
         type: 2}
       propertyPath: movementspeed
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 50692592112172814, guid: dfa439ba8276b2647a4e5be253a91689,
         type: 2}
@@ -18879,7 +18879,7 @@ Prefab:
     - target: {fileID: 114443072817663420, guid: dfa439ba8276b2647a4e5be253a91689,
         type: 2}
       propertyPath: walljumptime
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114443072817663420, guid: dfa439ba8276b2647a4e5be253a91689,
         type: 2}
@@ -18889,7 +18889,7 @@ Prefab:
     - target: {fileID: 114443072817663420, guid: dfa439ba8276b2647a4e5be253a91689,
         type: 2}
       propertyPath: walljumpmovemult
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114443072817663420, guid: dfa439ba8276b2647a4e5be253a91689,
         type: 2}
