@@ -2977,7 +2977,7 @@ Prefab:
     - target: {fileID: 224041990537869952, guid: 6eb8d62ad57db3846afb150906fb0e74,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 19.6
+      value: 19.599976
       objectReference: {fileID: 0}
     - target: {fileID: 224041990537869952, guid: 6eb8d62ad57db3846afb150906fb0e74,
         type: 2}
@@ -18159,7 +18159,7 @@ Prefab:
     - target: {fileID: 224881317736548448, guid: af90c9dda4663274ba429d59505f36a1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 19.379
+      value: 19.379028
       objectReference: {fileID: 0}
     - target: {fileID: 224881317736548448, guid: af90c9dda4663274ba429d59505f36a1,
         type: 2}
@@ -18910,6 +18910,11 @@ Prefab:
         type: 2}
       propertyPath: invinciblitytime
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114443072817663420, guid: dfa439ba8276b2647a4e5be253a91689,
+        type: 2}
+      propertyPath: isfacingright
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfa439ba8276b2647a4e5be253a91689, type: 2}
