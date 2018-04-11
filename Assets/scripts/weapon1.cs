@@ -16,5 +16,5 @@ public class weapon1 : MonoBehaviour
                 fight.Currenthp = fight.Currenthp - 20;
             }
         }
-    }
+    }       
 }
