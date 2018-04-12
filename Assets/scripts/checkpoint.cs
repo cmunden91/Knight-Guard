@@ -7,7 +7,7 @@ public class checkpoint : MonoBehaviour {
     bool active = false;
     [SerializeField] Sprite bluefire;
     [SerializeField] Sprite normalfire;
-
+    [SerializeField] RuntimeAnimatorController bluefireanimation;
     
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -17,6 +17,8 @@ public class checkpoint : MonoBehaviour {
         {
             active = true;
             gameObject.GetComponent<SpriteRenderer>().sprite = bluefire;
+            gameObject.GetComponent<Animator>().runtimeAnimatorController = bluefireanimation;
+            playercollision.LastCheckpoint = gameObject.transform;
         }
         
     }

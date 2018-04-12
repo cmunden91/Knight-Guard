@@ -10,6 +10,7 @@ public class MenuButtons : MonoBehaviour {
 public void newgame()
     {
         SceneManager.LoadScene(firstLevel);
+        Playerstatus.Currentdata = new SaveData(-1, 100, "FirstLevel", null);
     }
     public void loadgame()
     {
