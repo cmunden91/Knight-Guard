@@ -6,15 +6,17 @@ using UnityEngine.SceneManagement;
 public class MenuButtons : MonoBehaviour {
     [SerializeField]
     private string firstLevel;
+    [SerializeField]
+    private GameObject loadmenu;
 
 public void newgame()
     {
         SceneManager.LoadScene(firstLevel);
-        Playerstatus.Currentdata = new SaveData(-1, 100, "FirstLevel", null);
+        Playerstatus.Currentdata = new SaveData(100, "HollowedForest", null);
     }
     public void loadgame()
     {
-
+        loadmenu.SetActive(true);
     }
     public void options()
     {

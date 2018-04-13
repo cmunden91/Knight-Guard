@@ -683,7 +683,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e7f9db74e705f4388ddb81f4c30a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstLevel: FirstLevel
+  firstLevel: HollowedForest
+  loadmenu: {fileID: 0}
 --- !u!1 &1001122122
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,6 +942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstLevel: FirstLevel
+  loadmenu: {fileID: 0}
 --- !u!1 &1341955239
 GameObject:
   m_ObjectHideFlags: 0
