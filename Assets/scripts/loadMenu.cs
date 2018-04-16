@@ -9,7 +9,11 @@ public class loadMenu : MonoBehaviour {
     [SerializeField]
     Text[] healthFields;
     SaveData[] data;
-    IO io = new IO();
+    IO io;
+    public void Awake()
+    {
+        io = new IO((Application.persistentDataPath + "knightguard.dat"));
+    }
     private void OnEnable()
     {
         writemenu();

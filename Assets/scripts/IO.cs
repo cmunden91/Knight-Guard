@@ -7,26 +7,39 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 
-public class IO : MonoBehaviour {
-   private string path = Application.persistentDataPath + "knightguard.dat";
-   private BinaryFormatter bf = new BinaryFormatter();
+public class IO : ScriptableObject
+{
+    private string path;
     private SaveData[] data;
+
+    public IO(string path)
+    {
+        this.path = path;
+    }
+
     public SaveData[] Read()
     {
         try
         {
-            FileStream file = File.Open(path, FileMode.Open);
-            data = (SaveData[])bf.Deserialize(file);
-            file.Close();
-            
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file;
+            object data = bf.Deserialize(file = File.Open(path, FileMode.Open));
+            file.Dispose();
+           
+
         }
-        catch(IOException)
+        catch (IOException)
         {
+            BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(path, FileMode.Create, FileAccess.ReadWrite);
             SaveData[] blankdata = new SaveData[3];
             bf.Serialize(file, blankdata);
-            file.Close();
+            file.Dispose();
             Read();
+        }
+        for(int i = 0; i < data.Length;i++)
+        {
+            Debug.Log(data[i].Scene + ", " + data[i].MaxHP);
         }
         return data;
     }
@@ -39,7 +52,10 @@ public class IO : MonoBehaviour {
 
     public void Save(int slot)
     {
+        BinaryFormatter bf = new BinaryFormatter();
         data[slot] = Playerstatus.Currentdata;
         FileStream file = File.Open(path, FileMode.Create, FileAccess.ReadWrite);
+        bf.Serialize(file, data);
+        file.Close();
     }
 }
