@@ -7,6 +7,10 @@ public class player : fighter {
     private HUD hud;
     [SerializeField]
     private Transform lastCheckpoint;
+    [SerializeField]
+    private Animator playeranimator;
+    [SerializeField]
+    private AnimationClip deathanimation;
     // Use this for initialization
     void Start () {
         hud.playerbaractive(this);
@@ -39,13 +43,14 @@ public class player : fighter {
         set
         {
             lastCheckpoint = value;
+            Playerstatus.Currentdata.LastCheckpoint = value;
         }
     }
     public void setPosition(Transform position)
     {
         gameObject.transform.position = position.position;
     }
-    public new int Maxhp
+    public override int Maxhp
     {
         get
         {
@@ -56,6 +61,12 @@ public class player : fighter {
             base.Maxhp = value;
             Playerstatus.Currentdata.MaxHP = value;
         }
+    }
+    public override void death()
+    {
+        playeranimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+        playeranimator.SetBool("isdead", true);
+        Time.timeScale = 0;
     }
 
 }

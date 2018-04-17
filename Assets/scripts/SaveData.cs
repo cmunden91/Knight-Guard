@@ -36,6 +36,17 @@ public class SaveData : MonoBehaviour {
             scene = value;
         }
     }
+    public Transform LastCheckpoint
+    {
+        get
+        {
+            return lastCheckpoint;
+        }
+        set
+        {
+            lastCheckpoint = value;
+        }
+    }
 
 
 }
