@@ -48,6 +48,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer
+  - name: Forground
+    uniqueID: 674311307
+    locked: 0
+  - name: Player
     uniqueID: 3012134309
+    locked: 0
+  - name: New Layer
+    uniqueID: 1960455063
     locked: 0

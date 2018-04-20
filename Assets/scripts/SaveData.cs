@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[System.Serializable]
-public class SaveData : MonoBehaviour {
+
+/*public class SaveData : ScriptableObject { 
     private int maxHP;
     private string scene;
     private Transform lastCheckpoint;
@@ -47,6 +47,6 @@ public class SaveData : MonoBehaviour {
             lastCheckpoint = value;
         }
     }
+    
 
-
-}
+}*/

@@ -2,19 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Playerstatus  {
+public static class Playerstatus {
 
-    private static SaveData currentdata = new SaveData(0, "", null);
+    private static string levelname;
+    private static int maxhp;
+    private static Transform checkpoint;
 
-    public static SaveData Currentdata
+    public static string Levelname
     {
         get
         {
-            return currentdata;
+            return levelname;
         }
         set
         {
-            currentdata = value;
+            levelname = value;
+        }
+    }
+    public static int Maxhp
+    {
+        get
+        {
+            return maxhp;
+        }
+        set
+        {
+            maxhp = value;
+        }
+    }
+    public static Transform Checkpoint
+    {
+        get
+        {
+            return checkpoint;
+        }
+        set
+        {
+            checkpoint = value;
         }
     }
 }

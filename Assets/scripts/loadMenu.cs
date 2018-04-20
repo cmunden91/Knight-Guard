@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class loadMenu : MonoBehaviour {
+public class loadMenu : IO {
     [SerializeField]
     Text[] locationFields;
     [SerializeField]
@@ -12,7 +12,9 @@ public class loadMenu : MonoBehaviour {
     IO io;
     public void Awake()
     {
-        io = new IO((Application.persistentDataPath + "knightguard.dat"));
+        string path = Application.persistentDataPath + "knightguard.dat";
+        base.init(path);
+       
     }
     private void OnEnable()
     {
@@ -22,17 +24,17 @@ public class loadMenu : MonoBehaviour {
     {
         if (data[slot] != null)
         {
-            io.Load(slot);
+            base.Load(slot);
         }
     }
     public void save(int slot)
     {
-        io.Save(slot);
+        base.Save(slot);
         writemenu();
     }
     private void writemenu()
     {
-        data = io.Read();
+        data = base.Read();
         for (int i = 0; i < data.Length; i++)
         {
             if (data[i] != null)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuButtons : MonoBehaviour {
+public class MenuButtons : IO {
     [SerializeField]
     private string firstLevel;
     [SerializeField]
@@ -11,9 +11,8 @@ public class MenuButtons : MonoBehaviour {
 
 public void newgame()
     {
-        SaveData currentdata = Playerstatus.Currentdata;
-        currentdata.MaxHP = 100;
-        currentdata.Scene = "HollowedForest";
+        Playerstatus.Levelname = firstLevel;
+        Playerstatus.Maxhp = 100;
         SceneManager.LoadScene(firstLevel);
     }
     public void loadgame()

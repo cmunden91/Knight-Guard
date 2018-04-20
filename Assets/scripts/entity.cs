@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class entity : MonoBehaviour
 {
     [SerializeField]
-    private string name;
+    private string entityname;
     [SerializeField]
     private bool interactable;
     [SerializeField]
@@ -20,8 +20,8 @@ public abstract class entity : MonoBehaviour
     [HideInInspector]
     public string Name
     {
-        get { return name; }
-        set { name = value; }
+        get { return entityname; }
+        set { entityname = value; }
     }
 
     [HideInInspector]

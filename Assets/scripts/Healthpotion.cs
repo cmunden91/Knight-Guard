@@ -8,7 +8,7 @@ public class Healthpotion : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.transform.GetComponent<player>().Currenthp+=healamount;
+        collision.transform.GetComponent<player>().Currenthp+=healamount;   
             Destroy(gameObject);
     }
 }

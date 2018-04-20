@@ -14,12 +14,12 @@ public class player : fighter {
     // Use this for initialization
     void Start () {
         hud.playerbaractive(this);
-        if (Playerstatus.Currentdata.transform != null)
+        if (Playerstatus.Checkpoint != null)
         {
-            setPosition(Playerstatus.Currentdata.transform);
+            setPosition(Playerstatus.Checkpoint);
         }
         setPosition(lastCheckpoint);
-        base.Maxhp = Playerstatus.Currentdata.MaxHP;
+        base.Maxhp = Playerstatus.Maxhp;
 		
 	}
 	
@@ -43,7 +43,7 @@ public class player : fighter {
         set
         {
             lastCheckpoint = value;
-            Playerstatus.Currentdata.LastCheckpoint = value;
+            Playerstatus.Checkpoint = value;
         }
     }
     public void setPosition(Transform position)
@@ -59,14 +59,14 @@ public class player : fighter {
         set
         {
             base.Maxhp = value;
-            Playerstatus.Currentdata.MaxHP = value;
+            Playerstatus.Maxhp = value;
         }
     }
     public override void death()
     {
-        playeranimator.updateMode = AnimatorUpdateMode.UnscaledTime;
-        playeranimator.SetBool("isdead", true);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
+        Instantiate(Deatheffect, gameObject.transform.position, gameObject.transform.rotation);
+        Model.active = false;
     }
 
 }
