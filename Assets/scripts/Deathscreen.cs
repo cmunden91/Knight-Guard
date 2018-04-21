@@ -8,7 +8,7 @@ public class Deathscreen : MonoBehaviour {
 
     public void retry()
     {
-        SceneManager.LoadScene(Playerstatus.Levelname);
+        SceneManager.LoadScene(Playerstatus.Currentdata.Scene);
         Time.timeScale = 1;
         
     }

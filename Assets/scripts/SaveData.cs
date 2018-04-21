@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-/*public class SaveData : ScriptableObject { 
+[System.Serializable]
+public class SaveData : MonoBehaviour {
     private int maxHP;
     private string scene;
     private Transform lastCheckpoint;
@@ -36,7 +36,6 @@ using UnityEngine;
             scene = value;
         }
     }
-<<<<<<< HEAD
     public Transform LastCheckpoint
     {
         get
@@ -48,8 +47,6 @@ using UnityEngine;
             lastCheckpoint = value;
         }
     }
-    
-=======
->>>>>>> parent of 4856fa0... Deathscreen and Deathstate created. Animation needs work.
 
-}*/
+
+}

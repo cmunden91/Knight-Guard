@@ -7,15 +7,19 @@ public class player : fighter {
     private HUD hud;
     [SerializeField]
     private Transform lastCheckpoint;
+    [SerializeField]
+    private Animator playeranimator;
+    [SerializeField]
+    private AnimationClip deathanimation;
     // Use this for initialization
     void Start () {
         hud.playerbaractive(this);
-        if (Playerstatus.Checkpoint != null)
+        if (Playerstatus.Currentdata.transform != null)
         {
-            setPosition(Playerstatus.Checkpoint);
+            setPosition(Playerstatus.Currentdata.transform);
         }
         setPosition(lastCheckpoint);
-        base.Maxhp = Playerstatus.Maxhp;
+        base.Maxhp = Playerstatus.Currentdata.MaxHP;
 		
 	}
 	
@@ -39,17 +43,14 @@ public class player : fighter {
         set
         {
             lastCheckpoint = value;
-<<<<<<< HEAD
-            Playerstatus.Checkpoint = value;
-=======
->>>>>>> parent of 4856fa0... Deathscreen and Deathstate created. Animation needs work.
+            Playerstatus.Currentdata.LastCheckpoint = value;
         }
     }
     public void setPosition(Transform position)
     {
         gameObject.transform.position = position.position;
     }
-    public new int Maxhp
+    public override int Maxhp
     {
         get
         {
@@ -58,17 +59,14 @@ public class player : fighter {
         set
         {
             base.Maxhp = value;
-            Playerstatus.Maxhp = value;
+            Playerstatus.Currentdata.MaxHP = value;
         }
     }
-<<<<<<< HEAD
     public override void death()
     {
-        //Time.timeScale = 0;
-        Instantiate(Deatheffect, gameObject.transform.position, gameObject.transform.rotation);
-        Model.active = false;
+        playeranimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+        playeranimator.SetBool("isdead", true);
+        Time.timeScale = 0;
     }
-=======
->>>>>>> parent of 4856fa0... Deathscreen and Deathstate created. Animation needs work.
 
 }

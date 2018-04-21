@@ -16,10 +16,6 @@ public class fighter : entity
     protected int damageofattack;
     [SerializeField]
     protected float forceofattack;
-    [SerializeField]
-    private GameObject deatheffect;
-    [SerializeField]
-    private GameObject model;
     private bool invincible;
     private float timeoflasthit;
 
@@ -34,13 +30,17 @@ public class fighter : entity
             currenthp = value;
             if (currenthp <= 0)
             {
+                if(this is player)
+                {
+                    this.death();
+                }
                 death();
             }
         }
     }
 
     [HideInInspector]
-    public int Maxhp
+    public virtual int Maxhp
     {
         get { return maxhp; }
         set { maxhp = value; }
@@ -70,7 +70,7 @@ public class fighter : entity
 
 
 
-    public void death()
+    public virtual void death()
     {
         Destroy(gameObject);
     }
@@ -83,29 +83,6 @@ public class fighter : entity
             {
                 invincible = false;
             }
-        }
-    }
-
-    public GameObject Deatheffect
-    {
-        get
-        {
-            return deatheffect;
-        }
-        set
-        {
-            deatheffect = value;
-        }
-    }
-    public GameObject Model
-    {
-        get
-        {
-            return model;
-        }
-        set
-        {
-            model = value;
         }
     }
 }
