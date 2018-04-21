@@ -22,7 +22,7 @@ public class fighter : entity
 
 
     [HideInInspector]
-    public int Currenthp
+    public virtual int Currenthp
     {
         get { return currenthp; }
         set

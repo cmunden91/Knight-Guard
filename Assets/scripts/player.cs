@@ -60,6 +60,20 @@ public class player : fighter {
         {
             base.Maxhp = value;
             Playerstatus.Currentdata.MaxHP = value;
+            hud.playerbarupdate();
+        }
+    }
+    public override int Currenthp
+    {
+        get
+        {
+            return base.Currenthp;
+        }
+
+        set
+        {
+            base.Currenthp = value;
+            hud.playerbarupdate();
         }
     }
     public override void death()
