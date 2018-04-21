@@ -36,6 +36,7 @@ using UnityEngine;
             scene = value;
         }
     }
+<<<<<<< HEAD
     public Transform LastCheckpoint
     {
         get
@@ -48,5 +49,7 @@ using UnityEngine;
         }
     }
     
+=======
+>>>>>>> parent of 4856fa0... Deathscreen and Deathstate created. Animation needs work.
 
 }*/

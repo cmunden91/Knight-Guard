@@ -34,17 +34,13 @@ public class fighter : entity
             currenthp = value;
             if (currenthp <= 0)
             {
-                if(this is player)
-                {
-                    this.death();
-                }
                 death();
             }
         }
     }
 
     [HideInInspector]
-    public virtual int Maxhp
+    public int Maxhp
     {
         get { return maxhp; }
         set { maxhp = value; }
@@ -74,7 +70,7 @@ public class fighter : entity
 
 
 
-    public virtual void death()
+    public void death()
     {
         Destroy(gameObject);
     }
