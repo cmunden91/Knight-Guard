@@ -27,7 +27,14 @@ public class fighter : entity
         get { return currenthp; }
         set
         {
-            currenthp = value;
+            if ((value) >= maxhp)
+            {
+                currenthp = maxhp;
+            }
+            else
+            {
+                currenthp = value;
+            }   
             if (currenthp <= 0)
             {
                 if(this is player)

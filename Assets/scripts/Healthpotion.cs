@@ -6,9 +6,13 @@ public class Healthpotion : MonoBehaviour {
     [SerializeField]
     int healamount;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.transform.GetComponent<player>().Currenthp+=healamount;   
+        if (collision.transform.GetComponent<player>() != null)
+        {
+            collision.transform.GetComponent<player>().Currenthp += healamount;
             Destroy(gameObject);
+        }
     }
 }

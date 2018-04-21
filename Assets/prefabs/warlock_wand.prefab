@@ -116,7 +116,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   currenthp: 50
   maxhp: 50
-  isHostile: 0
+  isHostile: 1
   invinciblitytime: 0
   damageofattack: 20
   forceofattack: 0
