@@ -10,13 +10,15 @@ public class player : fighter {
     [SerializeField]
     private Animator playeranimator;
     [SerializeField]
-    private AnimationClip deathanimation;
+    private GameObject deathscreen;
+    [SerializeField]
+    private Rigidbody2D rb;
     // Use this for initialization
     void Start () {
         hud.playerbaractive(this);
-        if (Playerstatus.Currentdata.transform != null)
+        if (Playerstatus.Currentdata.LastCheckpoint.transform != null)
         {
-            setPosition(Playerstatus.Currentdata.transform);
+            setPosition(Playerstatus.Currentdata.LastCheckpoint.transform);
         }
         setPosition(lastCheckpoint);
         base.Maxhp = Playerstatus.Currentdata.MaxHP;
@@ -78,9 +80,11 @@ public class player : fighter {
     }
     public override void death()
     {
-        playeranimator.updateMode = AnimatorUpdateMode.UnscaledTime;
-        playeranimator.SetBool("isdead", true);
-        Time.timeScale = 0;
+        deathscreen.SetActive(true);
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        Model.SetActive(false);
+        Instantiate(Deatheffect, gameObject.transform.position, gameObject.transform.rotation);
+
     }
 
 }

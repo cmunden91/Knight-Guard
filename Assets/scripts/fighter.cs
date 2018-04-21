@@ -16,6 +16,10 @@ public class fighter : entity
     protected int damageofattack;
     [SerializeField]
     protected float forceofattack;
+    [SerializeField]
+    private GameObject model;
+    [SerializeField]
+    private GameObject deatheffect;
     private bool invincible;
     private float timeoflasthit;
 
@@ -79,6 +83,7 @@ public class fighter : entity
 
     public virtual void death()
     {
+        Instantiate(deatheffect, gameObject.transform.position, gameObject.transform.rotation);
         Destroy(gameObject);
     }
 
@@ -90,6 +95,28 @@ public class fighter : entity
             {
                 invincible = false;
             }
+        }
+    }
+    public GameObject Model
+    {
+        get
+        {
+            return model;
+        }
+        set
+        {
+            model = value;
+        }
+    }
+    public GameObject Deatheffect
+    {
+        get
+        {
+            return deatheffect;
+        }
+        set
+        {
+            deatheffect = value;
         }
     }
 }
