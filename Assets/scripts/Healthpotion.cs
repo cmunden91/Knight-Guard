@@ -9,9 +9,9 @@ public class Healthpotion : MonoBehaviour {
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.GetComponent<player>() != null)
+        if (collision.transform.GetComponent<Player>() != null)
         {
-            collision.transform.GetComponent<player>().Currenthp += healamount;
+            collision.transform.GetComponent<Player>().Currenthp += healamount;
             Destroy(gameObject);
         }
     }

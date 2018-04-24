@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class checkpoint : MonoBehaviour {
+public class Checkpoint : MonoBehaviour {
     [SerializeField]
     bool active = false;
     [SerializeField] Sprite bluefire;
@@ -12,7 +12,7 @@ public class checkpoint : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-       player playercollision = collision.transform.GetComponent<player>();
+        Player playercollision = collision.transform.GetComponent<Player>();
         if (playercollision != null)
         {
             active = true;

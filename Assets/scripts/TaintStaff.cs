@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaintStaff : fighter {
+public class TaintStaff : Fighter
+{
     [SerializeField]
     GameObject drop1;
     [SerializeField]
     GameObject drop2;
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.GetComponent<player>().takedamage(damageofattack, forceofattack);
+        collision.GetComponent<Player>().takedamage(damageofattack, forceofattack);
     }
 
     public override void death()

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class controller : MonoBehaviour {
+public class Controller : MonoBehaviour {
     [SerializeField]
     protected Rigidbody2D rb;
     [SerializeField]
-    protected entity ent;
+    protected Entity ent;
     [SerializeField]
     protected Transform transf;
     [SerializeField]
@@ -77,7 +77,7 @@ public class controller : MonoBehaviour {
         set { value = rb; }
     }
     [HideInInspector]
-    public entity Ent
+    public Entity Ent
     {
         get { return ent; }
         set { value = ent; }

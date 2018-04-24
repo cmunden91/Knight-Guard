@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player : fighter {
+public class Player : Fighter
+{
     [SerializeField]
     private HUD hud;
     [SerializeField]

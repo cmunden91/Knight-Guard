@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spikes : fighter
+public class Spikes : Fighter
 {
     public void OnCollisionEnter2D(Collision2D collision)
     {
 
-        collision.transform.GetComponent<player>().takedamage(damageofattack, forceofattack);
+        collision.transform.GetComponent<Player>().takedamage(damageofattack, forceofattack);
     }
 }
 

@@ -13,7 +13,7 @@ public class HUD : MonoBehaviour {
     private RectTransform hpbartransform;
     private float defaultbackx;
     private float defaultbarx;
-    private fighter player;
+    private Fighter player;
     private float backinticaloffset;
     private float barinticaloffset;
 
@@ -27,7 +27,7 @@ public class HUD : MonoBehaviour {
         barinticaloffset = hpbartransform.anchoredPosition.x;
     }
 
-    public void playerbaractive(fighter player)
+    public void playerbaractive(Fighter player)
     {
         this.player = player;
         playerbarupdate();

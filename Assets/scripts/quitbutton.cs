@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class quitbutton : MonoBehaviour {
+public class Quitbutton : MonoBehaviour {
     [SerializeField]
     private GameObject panel;
 

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class weapon1 : MonoBehaviour
+public class Weapon1 : MonoBehaviour
 {
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         {
             Debug.Log("Weapon Collison!");
-            fighter fight = collision.transform.GetComponent<fighter>();
+            Fighter fight = collision.transform.GetComponent<Fighter>();
             if (fight.IsHostile == true)
             {
 

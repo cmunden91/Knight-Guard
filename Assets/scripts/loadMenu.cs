@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class loadMenu : MonoBehaviour {
+public class LoadMenu : MonoBehaviour {
     [SerializeField]
     Text[] locationFields;
     [SerializeField]

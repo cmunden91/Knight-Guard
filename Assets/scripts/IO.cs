@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
@@ -47,7 +46,7 @@ public class IO : ScriptableObject
     public void Load(int slot)
     {
         Playerstatus.Currentdata = data[slot];
-        EditorSceneManager.LoadScene(data[slot].Scene);
+        //EditorSceneManager.LoadScene(data[slot].Scene);
     }
 
     public void Save(int slot)

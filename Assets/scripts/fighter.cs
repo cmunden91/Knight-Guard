@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fighter : entity
+public class Fighter : Entity
 {
     [SerializeField]
     private int currenthp;
@@ -41,7 +41,7 @@ public class fighter : entity
             }   
             if (currenthp <= 0)
             {
-                if(this is player)
+                if(this is Player)
                 {
                     this.death();
                 }

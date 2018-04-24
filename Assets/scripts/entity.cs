@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour
 {
     [SerializeField]
     private string name;
@@ -13,7 +13,7 @@ public abstract class entity : MonoBehaviour
     [SerializeField]
     private int jumpheight;
     [SerializeField]
-    protected controller controller;
+    protected Controller controller;
 
 
 
