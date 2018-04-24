@@ -8,6 +8,8 @@ public class MenuButtons : MonoBehaviour {
     private string firstLevel;
     [SerializeField]
     private GameObject loadmenu;
+    [SerializeField]
+    private GameObject controlmenu;
 
 public void newgame()
     {
@@ -30,5 +32,9 @@ public void newgame()
         Application.Quit();
     }
 
+    public void controls()
+    {
+        controlmenu.SetActive(true);
+    }
 
 }

@@ -13,13 +13,13 @@ public class Playercontroller : Controller
     [SerializeField]
     private float groundcircleradius;
     [SerializeField]
-    private float wallcheckradius;
+    private float wallcheckradius; //radius for the overlap circles used for ground and wall detection
     [SerializeField]
     private bool isgrounded;
     [SerializeField]
-    private LayerMask whatisground;
+    private LayerMask whatisground; //Filters out gameobjects by layer to indicate what is ground
     [SerializeField]
-    private int slowspeed;
+    private int slowspeed; 
     [SerializeField]
     private Transform rightwalldetection;
     [SerializeField]
@@ -27,9 +27,9 @@ public class Playercontroller : Controller
     [SerializeField]
     private int walljumptime;
     [SerializeField]
-    private int walljumpjumpmult;
+    private int walljumpjumpmult; //Mutliplyer for walljumping for y movement.
     [SerializeField]
-    private int walljumpmovemult;
+    private int walljumpmovemult; //Multiplyer for walljumping and x movement.
     [SerializeField]
     private GameObject pausemenu;
     private bool isgrabbing = false;
@@ -45,13 +45,11 @@ public class Playercontroller : Controller
     private bool haswalljumped = false;
     private const float INVALIDFALLCHECK = -9999999999999;
 
-    // Use this for initialization
     void Start()
     {
-        fallcheck = INVALIDFALLCHECK;
+        fallcheck = INVALIDFALLCHECK; //sets fallcheck to an invaild amount on start to avoid false postivies with jumping
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         updateinputs();
@@ -61,7 +59,7 @@ public class Playercontroller : Controller
         {
             grabcheck();
         }
-        isgrounded = Physics2D.OverlapCircle(ground.position, groundcircleradius, whatisground);
+        isgrounded = Physics2D.OverlapCircle(ground.position, groundcircleradius, whatisground); //creates an overlap circle to detect if the terrian below the player is ground
         if (isgrounded)
         {
             haswalljumped = false;
@@ -84,8 +82,8 @@ public class Playercontroller : Controller
         }
         if (escape)
         {
-            Time.timeScale = 0;
-            pausemenu.SetActive(true);
+            Time.timeScale = 0; //"pauses" the game.
+            pausemenu.SetActive(true); 
         }
         if (attack1)
         {
@@ -94,8 +92,11 @@ public class Playercontroller : Controller
         else
 
 
-            fallcheck = gameObject.transform.position.y;
+            fallcheck = gameObject.transform.position.y; //gets the y position to compare it with current players y position next fixed update
     }
+    /**
+     * Simple method that updates user the inputs
+     */
     private void updateinputs()
     {
         xaxis = Input.GetAxis("Horizontal");
@@ -103,21 +104,25 @@ public class Playercontroller : Controller
         escape = Input.GetButtonDown("Cancel");
         attack1 = Input.GetButtonDown("Fire1");
     }
+    /*
+     * method for checking and preforming wallgrabs 
+     */
     private void grabcheck()
     {
+        //Creates overlap circles to the left and right of the player.
         bool cangrableft = Physics2D.OverlapCircle(leftwalldetection.position, wallcheckradius, whatisground);
         bool cangrabright = Physics2D.OverlapCircle(rightwalldetection.position, wallcheckradius, whatisground);
             if (cangrableft == true)
             {
-                if (xaxis < 0)
+                if (xaxis < 0) //if the player is currently holding the button forcing them aganist the wall
                 {
                 if (haswalljumped == true)
                 {
-                    rb.velocity = new Vector2(rb.velocity.x, 0);
+                    rb.velocity = new Vector2(rb.velocity.x, 0); //if the player has walljumped and hits the wall again all upward moblity is eliminated
                 }
                 if (gameObject.transform.position.y < fallcheck)
                 {
-                    rb.drag = slowspeed;
+                    rb.drag = slowspeed; ///emulates the effect of "Grabbing and sliding down the wall
                     if (jump)
                     {
                         SideJump(true, ent.Jumpheight * walljumpjumpmult, ent.Movementspeed * walljumpmovemult, xaxis);
@@ -127,6 +132,7 @@ public class Playercontroller : Controller
                 }
                 }
             }
+            //This mirriors the code for grabbingright
             else if (cangrabright == true)
             {
                 if (xaxis > 0)
@@ -149,8 +155,8 @@ public class Playercontroller : Controller
             }
             else
             {
-                rb.drag = 0;
-            }
+                rb.drag = 0; //returns drag to normal returning the falling physics to normal.
+        }
         }
     
 
@@ -159,9 +165,9 @@ public class Playercontroller : Controller
         if (iswalljumping == true)
         {
             fixedupdatecounter++;
-            if (walljumptime - fixedupdatecounter > 0)
+            if (walljumptime - fixedupdatecounter > 0) //tracks and compares the number of updates the walljump will occur.
             {
-                xaxis = xaxis * -1;
+                xaxis = xaxis * -1; //reverses the player x axis during a walljump. creating a "arc" for their jumps
             }
             else
             {
@@ -171,13 +177,17 @@ public class Playercontroller : Controller
         }
     }
 
-
-    [HideInInspector]
+    /**
+     * getter and setter for isgrounded flag
+     */
     public bool Isgrounded
     {
         get { return isgrounded; }
         set { isgrounded = value; }
     }
+    /*
+     * getting for groundmanualset
+     */
     public bool Groundmanualset
     {
         get { return isgrabbing; }

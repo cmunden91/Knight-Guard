@@ -26,7 +26,7 @@ public class TaintStaff : Fighter
         int drop = UnityEngine.Random.Range(1, 100);
         if (drop <= 20)
         {
-            Instantiate(drop1, new Vector3(0, 0, 0), gameObject.transform.rotation, gameObject.transform);
+            Instantiate(drop1, gameObject.transform.position, gameObject.transform.rotation);
         }
         if (drop > 20)
         {

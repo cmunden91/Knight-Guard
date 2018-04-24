@@ -13,12 +13,12 @@ public class Checkpoint : MonoBehaviour {
     public void OnTriggerEnter2D(Collider2D collision)
     {
         Player playercollision = collision.transform.GetComponent<Player>();
-        if (playercollision != null)
+        if (playercollision != null) //If the collided object is a player
         {
-            active = true;
-            gameObject.GetComponent<SpriteRenderer>().sprite = bluefire;
-            gameObject.GetComponent<Animator>().runtimeAnimatorController = bluefireanimation;
-            playercollision.Spawnpoint = gameObject.transform;
+            active = true; 
+            gameObject.GetComponent<SpriteRenderer>().sprite = bluefire; //changes model to blue
+            gameObject.GetComponent<Animator>().runtimeAnimatorController = bluefireanimation; //changes animator for the blue fire.
+            playercollision.Spawnpoint = gameObject.transform; //changed spawnpoint too the checkpoints transform.
         }
         
     }
