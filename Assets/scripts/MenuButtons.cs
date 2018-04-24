@@ -11,9 +11,9 @@ public class MenuButtons : MonoBehaviour {
 
 public void newgame()
     {
-        SaveData currentdata = Playerstatus.Currentdata;
-        currentdata.MaxHP = 100;
-        currentdata.Scene = "HollowedForest";
+        Playerstatus.Currentdata.MaxHP = 100;
+        Playerstatus.Currentdata.Scene = firstLevel;
+        Playerstatus.Currentdata.LastCheckpoint = null;
         SceneManager.LoadScene(firstLevel);
     }
     public void loadgame()

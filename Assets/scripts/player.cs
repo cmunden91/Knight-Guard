@@ -7,7 +7,7 @@ public class Player : Fighter
     [SerializeField]
     private HUD hud;
     [SerializeField]
-    private Transform lastCheckpoint;
+    private Transform spawnpoint;
     [SerializeField]
     private Animator playeranimator;
     [SerializeField]
@@ -17,11 +17,11 @@ public class Player : Fighter
     // Use this for initialization
     void Start () {
         hud.playerbaractive(this);
-        if (Playerstatus.Currentdata.LastCheckpoint.transform != null)
+        if (Playerstatus.Currentdata.LastCheckpoint != null)
         {
-            setPosition(Playerstatus.Currentdata.LastCheckpoint.transform);
+            spawnpoint = Playerstatus.Currentdata.LastCheckpoint;
         }
-        setPosition(lastCheckpoint);
+        gameObject.transform.position = spawnpoint.position;
         base.Maxhp = Playerstatus.Currentdata.MaxHP;
 		
 	}
@@ -37,15 +37,15 @@ public class Player : Fighter
             hud.playerbarupdate();
         }
     }
-    public Transform LastCheckpoint
+    public Transform Spawnpoint
     {
         get
         {
-            return lastCheckpoint;
+            return spawnpoint;
         }
         set
         {
-            lastCheckpoint = value;
+            spawnpoint = value;
             Playerstatus.Currentdata.LastCheckpoint = value;
         }
     }

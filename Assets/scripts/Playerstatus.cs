@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Playerstatus  {
 
-    private static SaveData currentdata = new SaveData(0, "", null);
+    private static SaveData currentdata = new SaveData(100, "", null);
 
     public static SaveData Currentdata
     {
@@ -17,4 +17,6 @@ public static class Playerstatus  {
             currentdata = value;
         }
     }
+
 }
+

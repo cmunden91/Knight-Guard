@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,12 +11,19 @@ public class TaintStaff : Fighter
     GameObject drop2;
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.GetComponent<Player>().takedamage(damageofattack, forceofattack);
+        try
+        {
+            collision.GetComponent<Player>().takedamage(damageofattack, forceofattack);
+        }
+        catch(Exception ex)
+        {
+
+        }
     }
 
     public override void death()
     {
-        int drop = Random.Range(1, 100);
+        int drop = UnityEngine.Random.Range(1, 100);
         if (drop <= 20)
         {
             Instantiate(drop1, new Vector3(0, 0, 0), gameObject.transform.rotation, gameObject.transform);

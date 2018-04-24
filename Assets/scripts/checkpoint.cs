@@ -18,7 +18,7 @@ public class Checkpoint : MonoBehaviour {
             active = true;
             gameObject.GetComponent<SpriteRenderer>().sprite = bluefire;
             gameObject.GetComponent<Animator>().runtimeAnimatorController = bluefireanimation;
-            playercollision.LastCheckpoint = gameObject.transform;
+            playercollision.Spawnpoint = gameObject.transform;
         }
         
     }
