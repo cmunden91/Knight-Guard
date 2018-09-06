@@ -1,7 +1,7 @@
 <h1>Knight Guard</h1>
 
 Knight Guard is a game created for Windows PC's for UNCA's Undergraduate Research Symposium of April 24, 2018. 
-It is an Actuin-Adventure-Platformer intended to fuse the feeling of "metroidvania" titles and platformer titles like Mega Man X.
+It is an Action-Adventure-Platformer intended to fuse the feeling of "metroidvania" titles and platformer titles like Mega Man X.
 
 <h2>Bugs</h2>
 Checkpoints and saving is not implemented and neither is the options menu
